@@ -1,0 +1,74 @@
+.test-data-helper {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+}
+
+.test-data-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #3b82f6;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.test-data-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.test-data-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 12px;
+}
+
+.test-data-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.test-data-examples {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+
+.test-data-examples strong {
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.test-data-examples ul {
+  margin: 6px 0 0 0;
+  padding-left: 16px;
+}
+
+.test-data-examples li {
+  margin-bottom: 2px;
+  line-height: 1.3;
+}
+
+.test-data-examples code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+}

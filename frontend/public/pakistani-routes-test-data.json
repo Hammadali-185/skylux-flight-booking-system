@@ -1,0 +1,159 @@
+{
+  "title": "Pakistani Routes Test Data - SkyLux Airlines",
+  "description": "Sample data for testing Pakistani city routes and seat availability",
+  "lastUpdated": "2024-10-15",
+  
+  "availableRoutes": [
+    {
+      "route": "Karachi (KHI) ↔ Dubai (DXB)",
+      "duration": "2h 30m",
+      "prices": {
+        "economy": "$450",
+        "premium": "$750", 
+        "business": "$1,499",
+        "first": "$2,999"
+      },
+      "aircraft": "Boeing 777-300ER",
+      "frequency": "Daily flights"
+    },
+    {
+      "route": "Lahore (LHE) ↔ Dubai (DXB)",
+      "duration": "2h 30m", 
+      "prices": {
+        "economy": "$480",
+        "premium": "$800",
+        "business": "$1,599", 
+        "first": "$3,199"
+      },
+      "aircraft": "Airbus A330-300",
+      "frequency": "Daily flights"
+    },
+    {
+      "route": "Sialkot (SKT) ↔ Dubai (DXB)",
+      "duration": "2h 30m",
+      "prices": {
+        "economy": "$420",
+        "premium": "$700",
+        "business": "$1,399",
+        "first": "$2,799"
+      },
+      "aircraft": "Boeing 737-800", 
+      "frequency": "Daily flights"
+    },
+    {
+      "route": "Islamabad (ISB) ↔ Dubai (DXB)",
+      "duration": "2h 30m",
+      "prices": {
+        "economy": "$460",
+        "premium": "$760",
+        "business": "$1,519",
+        "first": "$3,039"
+      },
+      "aircraft": "Boeing 777-200LR",
+      "frequency": "Daily flights"
+    },
+    {
+      "route": "Karachi (KHI) ↔ Lahore (LHE)",
+      "duration": "1h 30m",
+      "prices": {
+        "economy": "$180",
+        "premium": "$300",
+        "business": "$599",
+        "first": "$1,199"
+      },
+      "aircraft": "Airbus A320-200",
+      "frequency": "Multiple daily flights"
+    },
+    {
+      "route": "Sialkot (SKT) ↔ Karachi (KHI)",
+      "duration": "1h 45m",
+      "prices": {
+        "economy": "$120",
+        "premium": "$200",
+        "business": "$399",
+        "first": "$799"
+      },
+      "aircraft": "ATR 72-600",
+      "frequency": "Daily flights"
+    },
+    {
+      "route": "Lahore (LHE) ↔ Islamabad (ISB)",
+      "duration": "1h 00m",
+      "prices": {
+        "economy": "$100",
+        "premium": "$170",
+        "business": "$339",
+        "first": "$679"
+      },
+      "aircraft": "Boeing 737-700",
+      "frequency": "Multiple daily flights"
+    }
+  ],
+
+  "airportCodes": {
+    "KHI": "Jinnah International Airport, Karachi, Pakistan",
+    "LHE": "Allama Iqbal International Airport, Lahore, Pakistan", 
+    "SKT": "Sialkot International Airport, Sialkot, Pakistan",
+    "ISB": "Islamabad International Airport, Islamabad, Pakistan",
+    "DXB": "Dubai International Airport, Dubai, UAE"
+  },
+
+  "seatAvailability": {
+    "description": "Realistic seat availability with 75% occupancy rate",
+    "seatStatus": {
+      "available": "Green - Available for booking",
+      "booked_male": "Blue - Occupied by male passenger",
+      "booked_female": "Pink - Occupied by female passenger",
+      "unavailable": "Gray - Booked/unavailable"
+    },
+    "specialSeats": {
+      "extra_legroom": "First few rows and exit rows",
+      "emergency_exit": "Rows 12-13 (marked with special indicators)",
+      "window": "A and F seats (window side)",
+      "aisle": "C and D seats (aisle side)"
+    }
+  },
+
+  "testDates": {
+    "description": "Flights available from October 1-30, 2024 and 2025",
+    "sampleDates": [
+      "2024-10-15",
+      "2024-10-16", 
+      "2024-10-17",
+      "2024-10-18",
+      "2024-10-19",
+      "2025-10-15",
+      "2025-10-20",
+      "2025-10-24",
+      "2025-10-25",
+      "2025-10-30"
+    ]
+  },
+
+  "quickTestInstructions": [
+    "1. Go to homepage and search for flights",
+    "2. Try these routes: KHI→DXB, LHE→DXB, SKT→DXB",
+    "3. Select dates between Oct 1-30, 2024 or 2025",
+    "4. Choose Economy class and 1 Adult",
+    "5. Click 'Search Flights' to see results",
+    "6. Click on a flight to see seat map",
+    "7. Notice seat colors: Green (available), Blue (male), Pink (female), Gray (booked)",
+    "8. Try selecting available seats",
+    "9. Complete booking flow to test all modules"
+  ],
+
+  "promoCodes": [
+    {
+      "code": "PAKISTAN20",
+      "description": "20% off for Pakistani routes",
+      "discount": "20%",
+      "validUntil": "2024-12-31"
+    },
+    {
+      "code": "DUBAI50",
+      "description": "$50 off Dubai flights",
+      "discount": "$50",
+      "validUntil": "2024-11-30"
+    }
+  ]
+}

@@ -1,0 +1,386 @@
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 800px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Background */
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 46, 0.6) 0%,
+    rgba(13, 71, 161, 0.4) 20%,
+    rgba(139, 21, 56, 0.3) 50%,
+    rgba(26, 26, 46, 0.5) 80%,
+    rgba(26, 26, 46, 0.7) 100%
+  );
+  z-index: 3;
+  backdrop-filter: blur(1px);
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 2;
+  /* Video filters for better background appearance with blue tint */
+  filter: brightness(0.7) contrast(1.1) saturate(0.9) hue-rotate(10deg) blur(0.5px);
+  transition: filter 0.3s ease;
+}
+
+.hero-video:hover {
+  filter: brightness(0.75) contrast(1.15) saturate(0.95) hue-rotate(10deg) blur(0.3px);
+}
+
+/* Video is visible by default */
+
+/* Fallback background for browsers that don't support video or when video fails to load */
+.hero-image-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 46, 0.9) 0%,
+    rgba(139, 21, 56, 0.4) 50%,
+    rgba(26, 26, 46, 0.9) 100%
+  ),
+  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23087ea4;stop-opacity:1" /><stop offset="100%" style="stop-color:%231a1a2e;stop-opacity:1" /></linearGradient></defs><rect width="1200" height="800" fill="url(%23sky)"/><path d="M0,400 Q300,350 600,400 T1200,400 L1200,800 L0,800 Z" fill="%23ffffff" fill-opacity="0.1"/><circle cx="200" cy="150" r="3" fill="%23ffffff" fill-opacity="0.6"/><circle cx="400" cy="120" r="2" fill="%23ffffff" fill-opacity="0.4"/><circle cx="800" cy="180" r="2.5" fill="%23ffffff" fill-opacity="0.5"/><circle cx="1000" cy="100" r="2" fill="%23ffffff" fill-opacity="0.3"/></svg>');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Content */
+.hero-content {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  padding-top: 100px;
+}
+
+.hero-text {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--white);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation-delay: 0.2s;
+}
+
+.title-accent {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  animation-delay: 0.4s;
+}
+
+/* Search Widget */
+.search-widget {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 24px;
+  animation-delay: 0.6s;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Trip Type Selector */
+.trip-type-selector {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px;
+  border-radius: 50px;
+  width: fit-content;
+}
+
+.trip-type-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.trip-type-btn.active {
+  background: var(--champagne-gold);
+  color: var(--deep-navy);
+  font-weight: 600;
+}
+
+.trip-type-btn:hover:not(.active) {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Search Form */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.search-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: end;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 4px;
+}
+
+.field-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.field-input:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.field-input:focus-within {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--champagne-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.field-icon {
+  color: var(--champagne-gold);
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.field-input input,
+.field-input select {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  outline: none;
+}
+
+.field-input input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.field-input select {
+  cursor: pointer;
+}
+
+.field-input select option {
+  background: var(--deep-navy);
+  color: var(--white);
+}
+
+/* Swap Button */
+.swap-btn {
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid var(--champagne-gold);
+  color: var(--champagne-gold);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.swap-btn:hover {
+  background: var(--champagne-gold);
+  color: var(--deep-navy);
+  transform: rotate(180deg);
+}
+
+/* Search Button */
+.search-btn {
+  align-self: center;
+  padding: 18px 48px;
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 200px;
+  margin-top: 8px;
+}
+
+.search-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+}
+
+/* Video Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    display: none;
+  }
+  
+  .hero-image-fallback {
+    display: block;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .search-row {
+    grid-template-columns: 1fr auto 1fr 1fr 1fr;
+  }
+  
+  .search-row .search-field:last-child {
+    grid-column: 3 / -1;
+  }
+  
+  .hero-video {
+    filter: brightness(0.5) contrast(1.05) saturate(0.85) hue-rotate(12deg) blur(0.8px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 100vh;
+  }
+  
+  .hero-content {
+    padding-top: 80px;
+  }
+  
+  .hero-video {
+    /* More aggressive filtering on mobile for better text readability with blue tint */
+    filter: brightness(0.4) contrast(1.0) saturate(0.8) hue-rotate(15deg) blur(1px);
+  }
+  
+  .hero-overlay {
+    /* Stronger overlay on mobile with blue theme */
+    background: linear-gradient(
+      135deg,
+      rgba(26, 26, 46, 0.8) 0%,
+      rgba(13, 71, 161, 0.6) 25%,
+      rgba(139, 21, 56, 0.4) 50%,
+      rgba(26, 26, 46, 0.7) 75%,
+      rgba(26, 26, 46, 0.85) 100%
+    );
+  }
+  
+  .search-widget {
+    margin: 0 16px;
+    padding: 24px;
+    border-radius: 16px;
+  }
+  
+  .search-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .swap-btn {
+    display: none;
+  }
+  
+  .trip-type-selector {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .trip-type-btn {
+    flex: 1;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  .search-btn {
+    width: 100%;
+    margin-top: 16px;
+  }
+  
+  .hero-text {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-widget {
+    padding: 20px;
+  }
+  
+  .field-input {
+    padding: 14px;
+  }
+  
+  .field-input input,
+  .field-input select {
+    font-size: 14px;
+  }
+  
+  .search-btn {
+    padding: 16px 32px;
+    font-size: 16px;
+  }
+}

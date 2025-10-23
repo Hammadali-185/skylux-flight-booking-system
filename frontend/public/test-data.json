@@ -1,0 +1,62 @@
+{
+  "testFlights": {
+    "title": "SkyLux Airlines - Test Flight Data (October 2024)",
+    "description": "Use this data to test the booking system functionality",
+    
+    "quickTests": [
+      {
+        "test": "Basic Search",
+        "from": "JFK",
+        "to": "LAX", 
+        "date": "2024-10-15",
+        "expected": "Multiple flights available with different times and prices"
+      },
+      {
+        "test": "International Route",
+        "from": "JFK",
+        "to": "LHR",
+        "date": "2024-10-20",
+        "expected": "Premium long-haul flights with higher prices"
+      },
+      {
+        "test": "Round Trip",
+        "from": "LAX",
+        "to": "NRT",
+        "depart": "2024-10-10",
+        "return": "2024-10-17",
+        "expected": "Outbound and return flight options"
+      },
+      {
+        "test": "Multi-city",
+        "segments": [
+          {"from": "JFK", "to": "LHR", "date": "2024-10-05"},
+          {"from": "LHR", "to": "CDG", "date": "2024-10-08"},
+          {"from": "CDG", "to": "JFK", "date": "2024-10-12"}
+        ],
+        "expected": "Complex itinerary with connections"
+      }
+    ],
+
+    "airports": {
+      "US": ["JFK", "LAX", "ORD", "MIA", "SFO", "LAS", "SEA", "DFW"],
+      "Europe": ["LHR", "CDG", "FRA", "AMS", "FCO", "MAD", "ZUR"],
+      "Asia": ["NRT", "ICN", "SIN", "BKK", "BOM", "DEL", "KUL"],
+      "Others": ["DXB", "SYD", "YYZ", "GRU"]
+    },
+
+    "priceRanges": {
+      "domestic": "$199 - $1,799",
+      "shortHaul": "$299 - $2,199", 
+      "longHaul": "$599 - $9,399"
+    },
+
+    "features": {
+      "seatSelection": "Interactive seat maps with real-time availability",
+      "fareCalculation": "Dynamic pricing with taxes, fees, and upgrades",
+      "promoSystem": "Working promo codes and gift card validation",
+      "booking": "Complete PNR generation and e-ticket creation"
+    }
+  }
+}
+
+
