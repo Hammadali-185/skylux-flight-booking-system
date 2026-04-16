@@ -125,6 +125,7 @@
   animation-delay: 0.6s;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   width: min(1200px, 100%);
+  min-width: 0;
 }
 
 /* Trip Type Selector */
@@ -167,6 +168,8 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  width: 100%;
+  min-width: 0;
 }
 
 .search-row {
@@ -174,6 +177,9 @@
   grid-template-columns: 1fr auto 1fr 1fr 1fr 1fr;
   gap: 16px;
   align-items: end;
+  justify-items: stretch;
+  width: 100%;
+  min-width: 0;
 }
 
 .search-field {
@@ -181,6 +187,18 @@
   flex-direction: column;
   gap: 8px;
   min-width: 0;
+  width: 100%;
+  align-self: stretch;
+}
+
+/* Ensure custom AirportSearch stretches like other inputs */
+.search-field > .airport-search {
+  width: 100%;
+  align-self: stretch;
+}
+
+.search-field > .airport-search .airport-input-container {
+  width: 100%;
 }
 
 .field-label {
@@ -200,6 +218,9 @@
   padding: 16px;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .field-input:hover {
@@ -344,9 +365,28 @@
     width: calc(100% - 32px);
   }
   
-  .search-row {
-    grid-template-columns: 1fr;
+  /* Scope + force single-column layout for HeroSection on mobile.
+     Other pages reuse generic class names like .search-row/.search-field, so we use higher specificity here. */
+  .hero-section .search-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-flow: row;
     gap: 20px;
+    width: 100%;
+  }
+
+  .hero-section .search-row > * {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Undo the <=1200px last-child spanning rule.
+     On a 1-column grid this can create implicit auto-sized columns and cause input boxes to collapse. */
+  .hero-section .search-row .search-field:last-child {
+    grid-column: auto;
+  }
+
+  .hero-section .field-label {
+    display: block;
   }
   
   .swap-btn {
