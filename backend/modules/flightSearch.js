@@ -2,11 +2,8 @@ const Flight = require('../models/Flight');
 const flightData = require('../data/flightData');
 const { airports } = require('../data/airports');
 
-// Use comprehensive flight data for October 2024
-const mockFlights = flightData.map(flight => {
-  flight.seatMap = generateSeatMap(flight.aircraft);
-  return flight;
-});
+// Keep flights in memory but generate heavy seat maps lazily.
+const mockFlights = flightData;
 
 // Generate seat map for different aircraft types
 function generateSeatMap(aircraftType) {
@@ -76,6 +73,13 @@ function generateSeatMap(aircraftType) {
   });
 
   return seatMap;
+}
+
+function ensureSeatMap(flight) {
+  if (!flight) return;
+  if (!flight.seatMap) {
+    flight.seatMap = generateSeatMap(flight.aircraft);
+  }
 }
 
 // Flight Search Functions
@@ -269,7 +273,9 @@ const flightSearch = {
 
   // Get flight by ID
   getFlightById: (flightId) => {
-    return mockFlights.find(flight => flight.id === flightId);
+    const flight = mockFlights.find(f => f.id === flightId);
+    ensureSeatMap(flight);
+    return flight;
   },
 
   // Update flight availability (for booking)

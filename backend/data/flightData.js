@@ -63,6 +63,8 @@ const generateFlightData = () => {
     { from: 'ISB', to: 'LHE', duration: '1h 00m', basePrice: { economy: 105, premium: 175, business: 349, first: 699 } }
   ];
 
+  const isProduction = process.env.NODE_ENV === 'production';
+
   const airlines = ['SkyLux Airlines'];
   const aircraftTypes = [
     { type: 'Boeing 787-9', seats: { economy: 50, premium: 20, business: 15, first: 8 } },
@@ -74,16 +76,18 @@ const generateFlightData = () => {
 
   let flightCounter = 1;
 
-  // Generate flights for each day in October 2024 and 2025
-  const years = [2024, 2025];
+  // Render free instances have limited memory. Keep production dataset small.
+  // Dev keeps the larger dataset for local testing.
+  const years = isProduction ? [2024] : [2024, 2025];
+  const routesToUse = isProduction ? routes.slice(0, 12) : routes;
   
   years.forEach(year => {
     for (let day = 1; day <= 30; day++) {
       const date = `${year}-10-${day.toString().padStart(2, '0')}`;
     
-    routes.forEach((route, routeIndex) => {
-      // Generate 2-4 flights per route per day
-      const flightsPerDay = Math.floor(Math.random() * 3) + 2;
+    routesToUse.forEach((route) => {
+      // Production: 1 flight per route per day. Dev: 2-4 flights per route per day.
+      const flightsPerDay = isProduction ? 1 : (Math.floor(Math.random() * 3) + 2);
       
       for (let flightNum = 0; flightNum < flightsPerDay; flightNum++) {
         const aircraft = aircraftTypes[Math.floor(Math.random() * aircraftTypes.length)];
