@@ -3,6 +3,7 @@ import { User, UserCheck, AlertCircle, Zap } from 'lucide-react';
 import './SeatMap.css';
 
 const SeatMap = ({ flightId, passengers, onSeatSelect, selectedSeats = [] }) => {
+  const API_BASE = (process.env.REACT_APP_API_URL || '').replace(/\/$/, '');
   const [seatMap, setSeatMap] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +13,7 @@ const SeatMap = ({ flightId, passengers, onSeatSelect, selectedSeats = [] }) => 
   const fetchSeatMap = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/booking/seat-map/${flightId}`);
+      const response = await fetch(`${API_BASE}/api/booking/seat-map/${flightId}`);
       const result = await response.json();
       
       if (result.success) {
@@ -31,7 +32,7 @@ const SeatMap = ({ flightId, passengers, onSeatSelect, selectedSeats = [] }) => 
     } finally {
       setLoading(false);
     }
-  }, [flightId]);
+  }, [API_BASE, flightId]);
 
   useEffect(() => {
     if (flightId) {

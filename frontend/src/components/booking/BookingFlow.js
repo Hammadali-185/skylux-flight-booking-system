@@ -10,6 +10,7 @@ import './BookingFlow.css';
 
 const BookingFlow = () => {
   const navigate = useNavigate();
+  const API_BASE = (process.env.REACT_APP_API_URL || '').replace(/\/$/, '');
   const [currentStep, setCurrentStep] = useState(1);
   const [bookingData, setBookingData] = useState({
     searchResults: null,
@@ -195,7 +196,7 @@ const BookingFlow = () => {
     if (bookingData.selectedFlights.length === 0) return;
 
     try {
-      const response = await fetch('/api/booking/fare/calculate', {
+      const response = await fetch(`${API_BASE}/api/booking/fare/calculate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -218,7 +219,7 @@ const BookingFlow = () => {
     } catch (err) {
       console.error('Fare calculation error:', err);
     }
-  }, [bookingData.selectedFlights, bookingData.passengers, bookingData.selectedSeats, bookingData.promoCode]);
+  }, [API_BASE, bookingData.selectedFlights, bookingData.passengers, bookingData.selectedSeats, bookingData.promoCode]);
 
   useEffect(() => {
     if (bookingData.selectedFlights.length > 0 && bookingData.passengers.length > 0) {
@@ -451,7 +452,7 @@ const BookingFlow = () => {
       if (!bookingData.promoCode) return;
 
       try {
-        const response = await fetch('/api/booking/promo/validate', {
+        const response = await fetch(`${API_BASE}/api/booking/promo/validate`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -580,7 +581,7 @@ const BookingFlow = () => {
     try {
       // Race between the API call and timeout
       const response = await Promise.race([
-        fetch('/api/booking/confirm', {
+        fetch(`${API_BASE}/api/booking/confirm`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

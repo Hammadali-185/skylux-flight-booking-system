@@ -4,6 +4,7 @@ import AirportSearch from './AirportSearch';
 import './FlightSearch.css';
 
 const FlightSearch = ({ onSearch, onFlightSelect }) => {
+  const API_BASE = (process.env.REACT_APP_API_URL || '').replace(/\/$/, '');
   const [searchData, setSearchData] = useState({
     tripType: 'round-trip',
     origin: '',
@@ -82,7 +83,7 @@ const FlightSearch = ({ onSearch, onFlightSelect }) => {
           travelClass: searchData.travelClass
         }));
 
-        const response = await fetch('/api/booking/multi-city/search', {
+        const response = await fetch(`${API_BASE}/api/booking/multi-city/search`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -109,7 +110,7 @@ const FlightSearch = ({ onSearch, onFlightSelect }) => {
           tripType: searchData.tripType
         };
 
-        const response = await fetch('/api/booking/search', {
+        const response = await fetch(`${API_BASE}/api/booking/search`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

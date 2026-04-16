@@ -3,6 +3,7 @@ import { MapPin, Search } from 'lucide-react';
 import './AirportSearch.css';
 
 const AirportSearch = ({ value, onChange, placeholder = "Search airports...", className = "" }) => {
+  const API_BASE = (process.env.REACT_APP_API_URL || '').replace(/\/$/, '');
   const [searchTerm, setSearchTerm] = useState('');
   const [airports, setAirports] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,7 @@ const AirportSearch = ({ value, onChange, placeholder = "Search airports...", cl
     
     setLoading(true);
     try {
-      const response = await fetch(`/api/booking/airports?search=${encodeURIComponent(search)}`);
+      const response = await fetch(`${API_BASE}/api/booking/airports?search=${encodeURIComponent(search)}`);
       const result = await response.json();
       
       if (result.success) {
