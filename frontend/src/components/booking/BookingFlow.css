@@ -2,7 +2,7 @@
   min-height: 100vh;
   background: var(--deep-navy);
   padding: 40px 0;
-  padding-top: 100px; /* Account for navigation bar */
+  padding-top: calc(var(--header-height) + 40px);
 }
 
 .booking-container {
@@ -591,6 +591,7 @@
 @media (max-width: 768px) {
   .booking-flow {
     padding: 20px 0;
+    padding-top: calc(var(--header-height-mobile) + 20px);
   }
   
   .booking-container {

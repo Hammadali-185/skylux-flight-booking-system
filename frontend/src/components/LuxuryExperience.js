@@ -162,7 +162,7 @@ const LuxuryExperience = () => {
             <p>Discover what's included in each cabin class</p>
           </div>
           
-          <div className="comparison-grid">
+          <div className="comparison-grid" aria-label="Premium features comparison table">
             <div className="feature-labels">
               <div className="label-header">Features</div>
               {premiumFeatures.map((feature, index) => (
@@ -203,6 +203,40 @@ const LuxuryExperience = () => {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Mobile-first comparison cards */}
+          <div className="comparison-cards" aria-label="Premium features comparison (mobile)">
+            {cabins.map((cabin, cabinIndex) => (
+              <div key={cabin.id} className="comparison-card glass">
+                <div className="comparison-card-header">
+                  <div className="cabin-icon-small" style={{ color: cabin.color }}>
+                    {cabin.icon}
+                  </div>
+                  <div className="comparison-card-title">
+                    <span className="comparison-cabin-name">{cabin.name}</span>
+                    <span className="comparison-cabin-desc">{cabin.description}</span>
+                  </div>
+                </div>
+
+                <div className="comparison-feature-list">
+                  {premiumFeatures.map((feature, featureIndex) => {
+                    const ok = feature.available[cabinIndex];
+                    return (
+                      <div key={featureIndex} className="comparison-feature-item">
+                        <div className="comparison-feature-left">
+                          <span className="feature-icon">{feature.icon}</span>
+                          <span className="comparison-feature-label">{feature.label}</span>
+                        </div>
+                        <div className={`comparison-feature-status ${ok ? 'available' : 'unavailable'}`}>
+                          {ok ? 'Included' : 'Not included'}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

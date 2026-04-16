@@ -18,7 +18,7 @@
   pointer-events: none;
 }
 
-.container {
+.top-destinations .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
@@ -27,7 +27,7 @@
 }
 
 /* Section Header */
-.section-header {
+.top-destinations .section-header {
   text-align: center;
   margin-bottom: 60px;
   opacity: 0;
@@ -35,12 +35,12 @@
   transition: all 0.8s ease;
 }
 
-.section-header.visible {
+.top-destinations .section-header.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.section-title {
+.top-destinations .section-title {
   font-family: var(--font-serif);
   font-size: 42px;
   font-weight: 700;
@@ -52,7 +52,7 @@
   line-height: 1.2;
 }
 
-.section-subtitle {
+.top-destinations .section-subtitle {
   font-size: 18px;
   color: rgba(255, 255, 255, 0.7);
   margin: 0;

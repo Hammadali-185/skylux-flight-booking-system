@@ -1,6 +1,8 @@
 .airport-search {
   position: relative;
   width: 100%;
+  display: block;
+  min-width: 0;
 }
 
 .airport-input-container {
@@ -13,6 +15,8 @@
   padding: 16px;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  min-width: 0;
+  width: 100%;
 }
 
 .airport-input-container:hover {
@@ -40,7 +44,8 @@
   font-weight: 500;
   width: 100%;
   outline: none;
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .airport-input::placeholder {
@@ -187,6 +192,14 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .airport-input-container {
+    padding: 14px;
+  }
+
+  .airport-input {
+    font-size: 14px;
+  }
+
   .airport-dropdown {
     max-height: 250px;
   }

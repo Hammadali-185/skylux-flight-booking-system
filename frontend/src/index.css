@@ -29,6 +29,12 @@
   --gradient-primary: linear-gradient(135deg, var(--deep-navy) 0%, var(--champagne-gold) 100%);
   --gradient-secondary: linear-gradient(135deg, var(--burgundy) 0%, var(--deep-navy) 100%);
   --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+
+  /* Fixed header sizing (used to offset page content) */
+  --header-height: 88px;
+  --header-height-scrolled: 64px;
+  --header-height-mobile: 72px;
+  --header-height-mobile-scrolled: 60px;
 }
 
 body {
@@ -41,6 +47,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 
 /* Scrollbar Styling */

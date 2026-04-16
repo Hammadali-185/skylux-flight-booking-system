@@ -3,7 +3,7 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   padding: 24px;
-  padding-top: 100px; /* Account for navigation bar */
+  padding-top: calc(var(--header-height) + 24px);
   color: var(--white);
 }
 
@@ -512,7 +512,7 @@
 @media (max-width: 768px) {
   .manage-booking-container {
     padding: 16px;
-    padding-top: 100px;
+    padding-top: calc(var(--header-height-mobile) + 16px);
   }
   
   .header-title {
